@@ -1,0 +1,21 @@
+{
+  "name": "easyblockerx",
+  "version": "1.0.0",
+  "description": "Efficient Chrome extension for X (Twitter) mute/block actions",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch --mode development",
+    "build": "vite build",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/chrome": "latest",
+    "terser": "latest",
+    "typescript": "latest",
+    "vite": "latest"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

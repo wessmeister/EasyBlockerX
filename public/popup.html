@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EasyBlockerX Settings</title>
+    <style>
+      :root {
+        --primary: #1da1f2;
+        --bg: #ffffff;
+        --text: #14171a;
+        --border: #e1e8ed;
+        --hover: #f7f9fa;
+        --success: #17bf63;
+        --error: #e0245e;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 320px;
+        padding: 24px;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--text);
+        background: var(--bg);
+      }
+
+      h1 {
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--primary);
+        text-align: center;
+        margin-bottom: 24px;
+      }
+
+      .settings-group {
+        margin-bottom: 20px;
+      }
+
+      .setting {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .setting:last-child {
+        border-bottom: none;
+      }
+
+      .setting label {
+        flex: 1;
+        font-weight: 500;
+        cursor: pointer;
+        user-select: none;
+      }
+
+      .setting input[type="checkbox"] {
+        width: 44px;
+        height: 24px;
+        appearance: none;
+        background: #b5bdc5;
+        border-radius: 12px;
+        cursor: pointer;
+        position: relative;
+        transition: background 0.2s ease;
+      }
+
+      .setting input[type="checkbox"]:checked {
+        background: var(--primary);
+      }
+
+      .setting input[type="checkbox"]::after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        top: 2px;
+        left: 2px;
+        transition: transform 0.2s ease;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .setting input[type="checkbox"]:checked::after {
+        transform: translateX(20px);
+      }
+
+      select {
+        padding: 6px 12px;
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        background: var(--bg);
+        color: var(--text);
+        font-size: 14px;
+        cursor: pointer;
+        transition: border-color 0.2s ease;
+      }
+
+      select:hover {
+        border-color: var(--primary);
+      }
+
+      select:focus {
+        outline: none;
+        border-color: var(--primary);
+      }
+
+      .status {
+        position: fixed;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%) translateY(100px);
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 13px;
+        font-weight: 500;
+        color: white;
+        opacity: 0;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      .status.show {
+        transform: translateX(-50%) translateY(0);
+        opacity: 1;
+      }
+
+      .status--success {
+        background: var(--success);
+      }
+
+      .status--error {
+        background: var(--error);
+      }
+
+      .footer {
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        font-size: 12px;
+        color: #657786;
+      }
+
+      .footer a {
+        color: var(--primary);
+        text-decoration: none;
+      }
+
+      .footer a:hover {
+        text-decoration: underline;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #15202b;
+          --text: #ffffff;
+          --border: #38444d;
+          --hover: #192734;
+        }
+
+        select {
+          background: var(--bg);
+          color: var(--text);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>EasyBlockerX</h1>
+
+    <div class="settings-group">
+      <div class="setting">
+        <label for="enableMuteButton">Show Mute Button</label>
+        <input type="checkbox" id="enableMuteButton" checked />
+      </div>
+
+      <div class="setting">
+        <label for="enableBlockButton">Show Block Button</label>
+        <input type="checkbox" id="enableBlockButton" checked />
+      </div>
+
+      <div class="setting">
+        <label for="confirmActions">Confirm Actions</label>
+        <input type="checkbox" id="confirmActions" checked />
+      </div>
+
+      <div class="setting">
+        <label for="enableAutoAction">Enable Auto-Action URLs</label>
+        <input type="checkbox" id="enableAutoAction" checked />
+      </div>
+
+      <div class="setting">
+        <label for="theme">Theme</label>
+        <select id="theme">
+          <option value="auto">Auto</option>
+          <option value="light">Light</option>
+          <option value="dark">Dark</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="footer">
+      <a href="https://github.com/yourusername/easyblockerx" target="_blank"
+        >Help & Support</a
+      >
+    </div>
+
+    <div id="status" class="status"></div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
